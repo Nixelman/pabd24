@@ -3,3 +3,7 @@ flask
 flask-cors
 cianparser
 scikit-learn
+pandas
+datetime
+boto3
+python-dotenv
