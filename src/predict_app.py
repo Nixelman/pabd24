@@ -4,6 +4,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from joblib import load
 from flask_httpauth import HTTPTokenAuth
+from utils import *
 
 
 MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
@@ -49,7 +50,8 @@ def home():
 def predict_web_serve():
     """Dummy service"""
     in_data = request.get_json()
-    price = predict(in_data)
+    # price = predict(in_data)
+    price = predict_io_bounded(in_data)
     return {'price': price}
 
 
