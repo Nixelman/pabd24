@@ -6,7 +6,7 @@ In this repo I create a web-app which determines the price for a flat in Moscow 
 
 ## Installation 
 
-Clone the repo, create vertual environment, activate and install dependencies:  
+Clone the repo, create virtual environment, activate and install dependencies:  
 
 ```sh
 git clone https://github.com/Nixelman/pabd24
