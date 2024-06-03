@@ -52,7 +52,7 @@ def predict_web_serve():
     in_data = request.get_json()
     # price = predict(in_data)
     area = in_data["area"]
-    price = predict_io_bounded(area)
+    price = predict_cpu_bounded(area)
     return {'price': price}
 
 
