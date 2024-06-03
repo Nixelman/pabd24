@@ -19,14 +19,14 @@ moscow_parser = cianparser.CianParser(location="Москва")
 
 def main():
     """"""
-    n_rooms = 3
+    n_rooms = 2
     data = moscow_parser.get_flats(
         deal_type="sale",
         rooms=(n_rooms,),
         # with_saving_csv=True,
         additional_settings={
             "start_page": 1,
-            "end_page": 50,
+            "end_page": 2,
             "object_type": "secondary"
         })
     df = pd.DataFrame(data)
