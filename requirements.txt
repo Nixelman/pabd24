@@ -13,3 +13,4 @@ numpy
 flask_httpauth
 joblib
 requests
+dvc[s3]
