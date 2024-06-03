@@ -51,7 +51,8 @@ def predict_web_serve():
     """Dummy service"""
     in_data = request.get_json()
     # price = predict(in_data)
-    price = predict_io_bounded(in_data)
+    area = in_data["area"]
+    price = predict_io_bounded(area)
     return {'price': price}
 
 
