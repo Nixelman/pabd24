@@ -8,7 +8,7 @@ from flask_httpauth import HTTPTokenAuth
 from utils import *
 
 
-MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
+MODEL_SAVE_PATH = 'models/linear_regression_vff.joblib'
 
 app = Flask(__name__)
 CORS(app)
