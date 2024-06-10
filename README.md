@@ -4,6 +4,10 @@
 
 In this repo I create a web-app which determines the price for a flat in Moscow using ML-model under the hood
 
+## Адресс для сервиса прдесказаия цен
+
+http://192.144.12.199:8000
+
 ## Installation 
 
 Clone the repo, create virtual environment, activate and install dependencies:  
