@@ -1,4 +1,9 @@
-"""Train model and save checkpoint"""
+"""Train model and save checkpoint
+lin reg [['total_meters',
+                        'first_floor',
+                        'last_floor',
+                        'floors_count',
+                        ]]"""
 
 import argparse
 import logging
@@ -16,12 +21,17 @@ logging.basicConfig(
 
 TRAIN_DATA = 'data/proc/train.csv'
 VAL_DATA = 'data/proc/val.csv'
-MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
+MODEL_SAVE_PATH = 'models/linear_regression_vff.joblib'
+
 
 
 def main(args):
     df_train = pd.read_csv(TRAIN_DATA)
-    x_train = df_train[['total_meters']]
+    x_train = df_train[['total_meters',
+                        'first_floor',
+                        'last_floor',
+                        'floors_count',
+                        ]]
     y_train = df_train['price']
 
     linear_model = LinearRegression()
@@ -30,10 +40,11 @@ def main(args):
     logger.info(f'Saved to {args.model}')
 
     r2 = linear_model.score(x_train, y_train)
-    c = int(linear_model.coef_[0])
+
+    c = linear_model.coef_
     inter = int(linear_model.intercept_)
 
-    logger.info(f'R2 = {r2:.3f}     Price = {c} * area + {inter}')
+    logger.info(f'R2 = {r2:.3f}  Coffs = {c} intercept = {inter}')
 
 
 if __name__ == '__main__':
