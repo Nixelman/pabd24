@@ -50,8 +50,8 @@ def predict_web_serve():
     """Dummy service"""
     in_data = request.get_json()
     # price = predict(in_data)
-    area = in_data["area"]
-    price = predict_cpu_multithread(area)
+    area = float(in_data['area'])
+    price = model.predict([[area]])
     return {'price': price}
 
 
