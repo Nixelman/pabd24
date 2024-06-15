@@ -37,13 +37,29 @@ def predict(in_data: dict) -> int:
     :rtype: int
     """
     area = float(in_data['area'])
-    price = model.predict([[area]])
+    floor = int(in_data['floor'])
+    floors_count = int(in_data['floors_count'])
+    is_first = (floor == 1)
+    is_last = (floor == floors_count)
+    price = model.predict([[area,
+                            is_first,
+                            is_last,
+                            floors_count]])
     return int(price)
 
 
 @app.route("/")
 def home():
-    return '<h1>Housing price service.</h1> Use /predict endpoint'
+    return """
+    <html>
+    <head>
+    <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body>
+    <h1>Housing price service.</h1> Use /predict endpoint
+    </body>
+    </html>
+    """
 
 
 @app.route("/predict", methods=['POST'])
@@ -51,9 +67,7 @@ def home():
 def predict_web_serve():
     """Dummy service"""
     in_data = request.get_json()
-    # price = predict(in_data)
-    area = in_data["area"]
-    price = predict_cpu_multithread(area)
+    price = predict(in_data)
     return {'price': price}
 
 
