@@ -1,8 +1,8 @@
 
 
-# Predictive Big Data Analytics
+# Предективная аналитика больших данных
 
-In this repo I create a web-app which determines the price for a flat in Moscow using ML-model under the hood
+Вэб приложение для определения цены на квартиру в Москве используя модели машинного обучения
 
 ## Адресс для сервиса прдесказаия цен
 
@@ -10,7 +10,7 @@ http://192.144.12.199:8000
 
 ## Installation 
 
-Clone the repo, create virtual environment, activate and install dependencies:  
+Клонирование репозитория, создание виртуального окружения, ативация и установка необходимых библиотек
 
 ```sh
 git clone https://github.com/Nixelman/pabd24
@@ -23,43 +23,47 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-## Usage
+## Использование
 
-### 1. Data collection
-<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/parse_cian.py">parse_cian.py</a></strong> Script for parsing flats charachteristics (e.g. price, location, meters etc.).</li>
+### 1. Сбор данных
+<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/parse_cian.py">parse_cian.py</a></strong> Скрипт для парсинга квартир.</li> 
 
 ```sh
 python src/parse_cian.py 
 ```  
 
-### 2. Upload data to S3 storage
-<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/upload_to_s3.py">upload_to_s3.py</a></strong> Script for uploading parsed files to S3 storage.</li> 
-To access the storage, copy the file`.env` to the root of the project.  
+### 2. Загрзка данных в S3 хранилище
+<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/upload_to_s3.py">upload_to_s3.py</a></strong> Скрипт для загрзки данных в S3 хранилище.</li>  
+Для доступа к хранилищу, скопировать файл `.env` в корень проекта
 
 ```sh
 python src/upload_to_s3.py -i data/raw/file.csv
 ```
-i - is the argument we use in the function. In this case, the path to the file of our function is specified.
-### 3.Download data to your local machine 
-<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/download_from_s3.py">download_from_s3.py</a></strong> Script for downloading files from S3 storage to your local directory.</li> 
+### 3.Скачевание данных на локальную машину
+<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/download_from_s3.py">download_from_s3.py</a></strong> Скрипт для скачевания данных на локальную машину.</li> 
 
 ```sh
 python src/download_from_s3.py
 ``` 
-### 4. Data preprocessing 
-<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/preprocess_data.py">preprocess_data.py</a></strong> Script for data preprocessing.</li> 
+### 4. Препроцессинг данных 
+<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/preprocess_data.py">preprocess_data.py</a></strong> Скрипт для препроцессинга.</li> 
 
-NOTE: this script prepares data for simple paired linear regression model, however, further I use multiple features models, thus, whole processing is included in train file (next step).
+### 5. Обучение модели
+<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/train_model.py">train_model.py</a></strong> Скрипт для обучения модели.</li> 
 
-### 5. Model training
-<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/train_model.py">train_model.py</a></strong> Script for data process and model training.</li> 
-To design the features, data were used about the city district, district (12 in total) where the apartment is located. The file with the mapping is <a href="https://github.com/Ezopik/pabd24/blob/main/mapping/county.txt">here</a></li> 
+### 6. Запуск Flask приложения
 
-### 6. Flask app launch
+<li><strong><a href="https://github.com/Nixelman/pabd24/blob/main/src/predict_app.py">predict_app.py</a></strong> Скрипт для запуска приложения</li>
 
-todo
+```sh
+python src/predict_app.py
+```
 
-### 7. Service usage through web-interface
+### 7. Использование сервиса через вэб интерфес
 
-For service usage use this file `web/index.html`.  
+Для использования приложения через вэб интерфейс `web/index.html`.  
 
+### 8. Приложение на продакшн сервере
+Detailed description of testing this web-application through virtual machine using gunicorn is <strong><a href="https://github.com/MathewShuvarikov/pabd24/blob/main/docs/report_3.md">here.</a>
+
+Port on which the application is currently running: 'http://192.144.12.8:8000/predict'
