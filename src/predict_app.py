@@ -4,8 +4,6 @@ from flask import Flask, request
 from flask_cors import CORS
 from joblib import load
 from flask_httpauth import HTTPTokenAuth
-# from src.utils import *
-# from utils import *
 
 
 MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
