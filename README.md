@@ -4,10 +4,6 @@
 
 Вэб приложение для определения цены на квартиру в Москве используя модели машинного обучения
 
-## Адресс для сервиса прдесказаия цен
-
-http://192.144.12.199:8000
-
 ## Installation 
 
 Клонирование репозитория, создание виртуального окружения, ативация и установка необходимых библиотек
@@ -64,6 +60,8 @@ python src/predict_app.py
 Для использования приложения через вэб интерфейс `web/index.html`.  
 
 ### 8. Приложение на продакшн сервере
-Detailed description of testing this web-application through virtual machine using gunicorn is <strong><a href="https://github.com/MathewShuvarikov/pabd24/blob/main/docs/report_3.md">here.</a>
+Описание тестирования <strong><a href="https://github.com/Nixelman/pabd24/blob/main/docs/report_3.md">here.</a>
 
-Port on which the application is currently running: 'http://192.144.12.8:8000/predict'
+Адресс для сервиса прдесказаия цен
+
+http://192.144.12.199:8000
