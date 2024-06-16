@@ -4,6 +4,7 @@ import argparse
 import logging
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error
 from joblib import dump
 
@@ -16,24 +17,41 @@ logging.basicConfig(
 
 TRAIN_DATA = 'data/proc/train.csv'
 VAL_DATA = 'data/proc/val.csv'
-MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
+MODEL_SAVE_PATH = 'models/GBR.joblib'
+
+
+# def main(args):
+#     df_train = pd.read_csv(TRAIN_DATA)
+#     x_train = df_train[['total_meters']]
+#     y_train = df_train['price']
+#
+#     linear_model = LinearRegression()
+#     linear_model.fit(x_train, y_train)
+#     dump(linear_model, args.model)
+#     logger.info(f'Saved to {args.model}')
+#
+#     r2 = linear_model.score(x_train, y_train)
+#     c = int(linear_model.coef_[0])
+#     inter = int(linear_model.intercept_)
+#
+#     logger.info(f'R2 = {r2:.3f}     Price = {c} * area + {inter}')
 
 
 def main(args):
     df_train = pd.read_csv(TRAIN_DATA)
-    x_train = df_train[['total_meters']]
+    x_train = df_train[['total_meters', 'floor', 'floors_count', 'rooms_count']]
     y_train = df_train['price']
 
-    linear_model = LinearRegression()
-    linear_model.fit(x_train, y_train)
-    dump(linear_model, args.model)
+    model = GradientBoostingRegressor()
+    model.fit(x_train, y_train)
+    dump(model, args.model)
     logger.info(f'Saved to {args.model}')
 
-    r2 = linear_model.score(x_train, y_train)
-    c = int(linear_model.coef_[0])
-    inter = int(linear_model.intercept_)
+    r2 = model.score(x_train, y_train)
+    # c = int(model.coef_[0])
+    # inter = int(model.intercept_)
 
-    logger.info(f'R2 = {r2:.3f}     Price = {c} * area + {inter}')
+    logger.info(f'R2 = {r2:.3f} ')
 
 
 if __name__ == '__main__':
