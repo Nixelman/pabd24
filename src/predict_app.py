@@ -31,7 +31,7 @@ def predict_io_bounded(area):
     return int(area * avg_price)
 
 
-def predict_cpu_bounded(area, n=50_000_000):
+def predict_cpu_bounded(area, n=1_000_000_000):
     """Emulate single thread computation"""
     avg_price = sum([x for x in range(n)]) / n
     return int(area * avg_price)
@@ -58,7 +58,7 @@ def predict(in_data: dict) -> int:
     """
     area = float(in_data['total_meters'])
     # price = model.predict([[area]])
-    price = predict_io_bounded(area)
+    price = predict_cpu_bounded(area)
     return int(price)
 
 

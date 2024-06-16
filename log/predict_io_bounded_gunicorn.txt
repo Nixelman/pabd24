@@ -1,0 +1,10 @@
+Waited 1.03 sec {"price":500000}
+ Waited 2.00 sec {"price":1000000}
+ Waited 2.97 sec {"price":1500000}
+ Waited 3.95 sec {"price":2000000}
+ Waited 4.95 sec {"price":2500000}
+ Waited 5.95 sec {"price":3000000}
+ Waited 6.95 sec {"price":3500000}
+ Waited 7.95 sec {"price":4000000}
+ Waited 8.95 sec {"price":4500000}
+ Waited 9.93 sec {"price":5000000}
