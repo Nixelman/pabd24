@@ -6,6 +6,8 @@ from flask_cors import CORS
 from joblib import load
 from flask_httpauth import HTTPTokenAuth
 from flask import send_from_directory
+import time
+import numpy as np
 
 MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
 
@@ -20,6 +22,25 @@ tokens = {
 }
 
 model = load(MODEL_SAVE_PATH)
+
+
+def predict_io_bounded(area):
+    """Emulate io delay"""
+    time.sleep(1)
+    avg_price = 50_000                 # RUB / m2
+    return int(area * avg_price)
+
+
+def predict_cpu_bounded(area, n=50_000_000):
+    """Emulate single thread computation"""
+    avg_price = sum([x for x in range(n)]) / n
+    return int(area * avg_price)
+
+
+def predict_cpu_multithread(area, n=50_000_000):
+    """Emulate multi thread computation"""
+    avg_price = np.mean(np.arange(n))
+    return int(area * avg_price)
 
 
 @auth.verify_token
