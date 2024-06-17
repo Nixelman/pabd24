@@ -31,8 +31,6 @@ def main(args):
     logger.info(f'Saved to {args.model}')
 
     r2 = model.score(x_train, y_train)
-    # c = int(model.coef_[0])
-    # inter = int(model.intercept_)
 
     logger.info(f'R2 = {r2:.3f} ')
 
