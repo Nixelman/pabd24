@@ -22,10 +22,10 @@ MODEL_SAVE_PATH = 'models/GBR.joblib'
 
 def main(args):
     df_train = pd.read_csv(TRAIN_DATA)
-    x_train = df_train[['total_meters', 'floor', 'floors_count', 'rooms_count', "first_floor", "last_floor"]]
+    x_train = df_train[['total_meters', 'floor', 'floors_count', 'rooms_count']]
     y_train = df_train['price']
 
-    model = GradientBoostingRegressor(n_estimators=500)
+    model = GradientBoostingRegressor(n_estimators=50)
     model.fit(x_train, y_train)
     dump(model, args.model)
     logger.info(f'Saved to {args.model}')
