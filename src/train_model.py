@@ -20,23 +20,6 @@ VAL_DATA = 'data/proc/val.csv'
 MODEL_SAVE_PATH = 'models/linka.joblib'
 
 
-# def main(args):
-#     df_train = pd.read_csv(TRAIN_DATA)
-#     x_train = df_train[['total_meters']]
-#     y_train = df_train['price']
-#
-#     linear_model = LinearRegression()
-#     linear_model.fit(x_train, y_train)
-#     dump(linear_model, args.model)
-#     logger.info(f'Saved to {args.model}')
-#
-#     r2 = linear_model.score(x_train, y_train)
-#     c = int(linear_model.coef_[0])
-#     inter = int(linear_model.intercept_)
-#
-#     logger.info(f'R2 = {r2:.3f}     Price = {c} * area + {inter}')
-
-
 def main(args):
     df_train = pd.read_csv(TRAIN_DATA)
     x_train = df_train[['total_meters', 'floor', 'floors_count', 'rooms_count']]
