@@ -40,8 +40,11 @@ def predict(in_data: dict) -> int:
     """
     area = float(in_data['total_meters'])
     floor = float(in_data['floor'])
-    rooms_count = float(in_data['rooms_count'])
-    price = model.predict([[area, floor, rooms_count]])
+    floors_count = float(in_data['floors_count'])
+    first_floor = float(in_data['first_floor'])
+    last_floor = float(in_data['floors_count'])
+    rooms_count = float(in_data['last_floor'])
+    price = model.predict([[area, floor, rooms_count, floors_count, first_floor, last_floor]])
     return int(price)
 
 
