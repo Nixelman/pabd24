@@ -65,3 +65,7 @@ python src/predict_app.py
 Адресс для сервиса прдесказаия цен
 
 http://192.144.12.199:8000
+
+Для запуска приложения через docker:
+
+docker run nixelman/pabd24:best_model

@@ -10,7 +10,7 @@ import time
 import numpy as np
 
 
-MODEL_SAVE_PATH = 'models/linka.joblib'
+MODEL_SAVE_PATH = 'models/GRB.joblib'
 
 app = Flask(__name__)
 CORS(app)
@@ -40,9 +40,8 @@ def predict(in_data: dict) -> int:
     """
     area = float(in_data['total_meters'])
     floor = float(in_data['floor'])
-    floors_count = float(in_data['floors_count'])
     rooms_count = float(in_data['rooms_count'])
-    price = model.predict([[area, floor, floors_count, rooms_count]])
+    price = model.predict([[area, floor, rooms_count]])
     return int(price)
 
 
