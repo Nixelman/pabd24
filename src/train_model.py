@@ -22,7 +22,7 @@ MODEL_SAVE_PATH = 'models/GBR.joblib'
 
 def main(args):
     df_train = pd.read_csv(TRAIN_DATA)
-    x_train = df_train[['total_meters', 'floor', 'rooms_count']]
+    x_train = df_train[['total_meters', 'floor', 'floors_count', 'rooms_count']]
     y_train = df_train['price']
 
     model = GradientBoostingRegressor()

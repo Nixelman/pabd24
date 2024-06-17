@@ -68,4 +68,7 @@ http://192.144.12.199:8000
 
 Для запуска приложения через docker:
 
+
+```sh
 docker run -p 8000:8000 nixelman/pabd24:best_model
+```
