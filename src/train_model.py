@@ -17,7 +17,7 @@ logging.basicConfig(
 
 TRAIN_DATA = 'data/proc/train.csv'
 VAL_DATA = 'data/proc/val.csv'
-MODEL_SAVE_PATH = 'models/GBR.joblib'
+MODEL_SAVE_PATH = 'models/linka.joblib'
 
 
 # def main(args):
@@ -42,7 +42,7 @@ def main(args):
     x_train = df_train[['total_meters', 'floor', 'floors_count', 'rooms_count']]
     y_train = df_train['price']
 
-    model = GradientBoostingRegressor()
+    model = LinearRegression()
     model.fit(x_train, y_train)
     dump(model, args.model)
     logger.info(f'Saved to {args.model}')

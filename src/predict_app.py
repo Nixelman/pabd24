@@ -10,7 +10,8 @@ import time
 import numpy as np
 
 # MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
-MODEL_SAVE_PATH = 'models/GBR.joblib'
+# MODEL_SAVE_PATH = 'models/GBR.joblib'
+MODEL_SAVE_PATH = 'models/linka.joblib'
 
 app = Flask(__name__)
 CORS(app)
