@@ -9,8 +9,7 @@ from flask import send_from_directory
 import time
 import numpy as np
 
-# MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
-# MODEL_SAVE_PATH = 'models/GBR.joblib'
+
 MODEL_SAVE_PATH = 'models/linka.joblib'
 
 app = Flask(__name__)
@@ -24,25 +23,6 @@ tokens = {
 }
 
 model = load(MODEL_SAVE_PATH)
-
-
-# def predict_io_bounded(area):
-#     """Emulate io delay"""
-#     time.sleep(1)
-#     avg_price = 50_000                 # RUB / m2
-#     return int(area * avg_price)
-#
-#
-# def predict_cpu_bounded(area, n=10_000_000):
-#     """Emulate single thread computation"""
-#     avg_price = sum([x for x in range(n)]) / n
-#     return int(area * avg_price)
-#
-#
-# def predict_cpu_multithread(area, n=400_000_000):
-#     """Emulate multi thread computation"""
-#     avg_price = np.mean(np.arange(n))
-#     return int(area * avg_price)
 
 
 @auth.verify_token
@@ -63,7 +43,6 @@ def predict(in_data: dict) -> int:
     floors_count = float(in_data['floors_count'])
     rooms_count = float(in_data['rooms_count'])
     price = model.predict([[area, floor, floors_count, rooms_count]])
-    # price = predict_cpu_multithread(area)
     return int(price)
 
 
