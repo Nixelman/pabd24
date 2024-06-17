@@ -10,7 +10,7 @@ import time
 import numpy as np
 
 
-MODEL_SAVE_PATH = 'models/GRB.joblib'
+MODEL_SAVE_PATH = 'models/GBR.joblib'
 
 app = Flask(__name__)
 CORS(app)
